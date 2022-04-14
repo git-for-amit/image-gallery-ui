@@ -1,0 +1,71 @@
+<div style="width:100%; height:90%; display: flex">
+  <div style="width:50%; height:90%;">
+    <app-carousel [autoPlayDuration]="5000" [isNavigationVisible]="true" [isThumbnailsVisible]="true" [slides]="slides"
+      [slideTemplateRef]="slide" [thumbnailTemplateRef]="thumbnail"></app-carousel>
+    <ng-template #slide let-slide>
+      <div [ngStyle]="{
+        'background-size': 'cover',
+        'background-image': 'url(' + slide.url + ')',
+        'background-repeat': 'no-repeat',
+        'width': '100%',
+        'height': '100%'
+      }">
+      </div>
+    </ng-template>
+    <ng-template #thumbnail let-slide>
+      <div [ngStyle]="{
+          'background-size': 'cover',
+          'background-image': 'url(' + slide.url + ')',
+          'background-repeat': 'no-repeat',
+          'background-position': 'center center',
+          'width': '100%',
+          'height': '100%'
+        }"></div>
+    </ng-template>
+  </div>
+  <div style="width:50%; height:90%;">
+    <h1 style="color: rgb(92, 92, 95);">Bohemian Chic Animal Organic Swaddle Set (Set of 2)</h1>
+    <div style=" margin: 10px;color: rgb(92, 92, 95);">
+      <mat-chip-list aria-label=" Fish selection">
+        <mat-chip color="primary" selected>Description</mat-chip>
+        <mat-chip>Shipping & Return</mat-chip>
+      </mat-chip-list>
+    </div>
+    <div style=" margin: 10px; color: rgb(92, 92, 95);">
+      <p>
+        Artistic, Exotic, Radical, Free Spirited, & Wild - Perfectly describes our bohemian chic animal Swaddle Set
+        illustrating the rustic cave life in vibrant colors.
+      </p>
+      <p>
+        Organic Muslin Swaddles - new mum’s best friend! Definitely one of the most versatile baby items, these muslin
+        swaddles are so practical for swaddling, feeding, burping and more. The possibilities are endless!
+      </p>
+      <p>
+        Each swaddle cloth is made of premium quality Organic Muslin cotton and gets softer with every wash. The open
+        weave fabric increases breathability & regulates temperature.
+      </p>
+
+      <p>
+        Generous in size and versatile they are useful as a swaddle, light blanket, breastfeeding or pram cover, mat,
+        change pad cover or burp cloth.
+      </p>
+
+      <p>
+        Wrap up and feel the love!
+      </p>
+      <ul>
+        <li> Organic Muslin Cotton</li>
+        <li> Muslin Swaddle Wrap</li>
+        <li> Dimensions : 120 X 120 Cm</li>
+        <li> Care: Machine wash, Tumble dry, Cool iron (if required)</li>
+        <li> Ethically made in India</li>
+        <li> Standard 100 by OEKO-TEX®</li>
+        <li> Free Shipping across India</li>
+        <li> Packed in our signature Cotton Bag</li>
+        <li> Set of two Swaddle</li>
+      </ul>
+    </div>
+
+
+  </div>
+</div>

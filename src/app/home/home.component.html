@@ -1,0 +1,141 @@
+<div style="width:100%; height: 90%; display: flex">
+    <div style="width:100%; height:100%;">
+        <app-carousel [autoPlayDuration]="5000" [isNavigationVisible]="false" [isThumbnailsVisible]="false"
+            [slides]="slides" [slideTemplateRef]="slide"></app-carousel>
+        <ng-template #slide let-slide>
+            <div [ngStyle]="{
+          'background-size': 'cover',
+          'background-image': 'url(' + slide.url + ')',
+          'background-repeat': 'no-repeat',
+          'width': '100%',
+          'height': '100%'
+        }">
+            </div>
+        </ng-template>
+    </div>
+</div>
+<h3 style="font-family: Roboto, Helvetica Neue, sans-serif;font-size: 18px;font-weight: 500;">Product Range</h3>
+<div fxLayout="row" fxLayoutAlign="space-between">
+
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Infant & Baby</mat-card-title>
+            <mat-card-subtitle><a href="http://premeuropa.com/muslin-squares.html">Cloth Diapers - Muslin
+                    Squares</a>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="assets/images/muslin-inner.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-header>
+            Made to Order
+
+        </mat-card-header>
+        <ul>
+            <li><a href="http://premeuropa.com/infant-baby-products.html">Swaddling Blankets</a></li>
+            <li><a href="http://premeuropa.com/infant-baby-products.html">Printed & Embroidered Diapers</a></li>
+            <li><a href="http://premeuropa.com/infant-baby-products.html">Diapers</a></li>
+            <li><a href="http://premeuropa.com/infant-baby-products.html">Neck Kerchiefs</a></li>
+            <li><a href="http://premeuropa.com/infant-baby-products.html">Baby Bibs</a></li>
+            <li><a href="http://premeuropa.com/infant-baby-products.html">Baby Hood Towels</a></li>
+            <li><a href="http://premeuropa.com/infant-baby-products.html">Fitter Sheets</a></li>
+        </ul>
+
+
+    </mat-card>
+
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Home Textiles</mat-card-title>
+            <mat-card-subtitle>&nbsp;
+            </mat-card-subtitle>
+        </mat-card-header>
+
+        <img mat-card-image src="assets/images/home-textile-b.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-header>
+            Made to Order
+
+        </mat-card-header>
+        <ul>
+            <li><a href="http://premeuropa.com/home-textiles-products.html">Made Ups</a></li>
+            <li><a href="http://premeuropa.com/home-textiles-products.html">Table Linen</a></li>
+            <li><a href="http://premeuropa.com/home-textiles-products.html">Kitchen Linen</a></li>
+            <li><a href="http://premeuropa.com/home-textiles-products.html">Bed Linen</a></li>
+        </ul>
+
+
+    </mat-card>
+
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Woven Fabrics</mat-card-title>
+            <mat-card-subtitle>&nbsp;
+            </mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="assets/images/woven-inner.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-header>
+            Made to Order
+
+        </mat-card-header>
+        <ul>
+            <li><a href="http://premeuropa.com/woven-fabrics-products.html">Satin Weaves</a></li>
+            <li><a href="http://premeuropa.com/woven-fabrics-products.html">Plain Weaves</a></li>
+            <li><a href="http://premeuropa.com/woven-fabrics-products.html">Stripe Satin</a></li>
+            <li><a href="http://premeuropa.com/woven-fabrics-products.html">Jacquard Patterns</a></li>
+            <li><a href="http://premeuropa.com/woven-fabrics-products.html">Dobby Stripes</a></li>
+            <li><a href="http://premeuropa.com/woven-fabrics-products.html">Yarn Dyed Fabrics</a></li>
+            <li><a href="http://premeuropa.com/woven-fabrics-products.html">VAT dyed with chlorine resistant
+                    and washfastness upto 95C</a></li>
+
+        </ul>
+
+
+    </mat-card>
+
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Yarns</mat-card-title>
+            <mat-card-subtitle>&nbsp;
+            </mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="assets/images/ring-spun-yarn-inner.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-header>
+            Made to Order
+
+        </mat-card-header>
+        <ul>
+            <li><a href="http://premeuropa.com/yarns-products.html">Ring Spurn Yarn</a></li>
+            <li><a href="http://premeuropa.com/yarns-products.html">Vortex Yarn</a></li>
+            <li><a href="http://premeuropa.com/yarns-products.html">Polyster Textured Yarn</a></li>
+        </ul>
+
+
+    </mat-card>
+
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Rubber Thread</mat-card-title>
+            <mat-card-subtitle>&nbsp;
+            </mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="assets/images/rubber-thread-1.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-header>
+            Made to Order
+
+        </mat-card-header>
+        <ul>
+            <li><a href="http://premeuropa.com/yarns-threads-products.html">Rubber Thread</a></li>
+            <li><a href="http://premeuropa.com/yarns-threads-products.html">Covered Rubber Thread</a></li>
+            <li><a href="http://premeuropa.com/yarns-threads-products.html">Spandex Covered Yarn</a></li>
+        </ul>
+
+
+    </mat-card>
+
+</div>
+<div
+  style="background-color: #0093cf;width: 100%;color:white;min-height: 50px;display: flex;align-items: center;justify-content: center;">
+  &copy;Copyright 2015 Prem International. All Rights Reserved.</div>

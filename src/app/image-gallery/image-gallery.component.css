@@ -1,0 +1,15 @@
+mat-card img{
+    object-fit: cover; /*this makes the image in src fit to the size specified below*/
+    cursor: pointer;
+  }
+
+  .example {
+    margin: 1em 0;
+  }
+  
+  .example img {
+    width: 30vw;
+    height: 30vw;
+  }
+  
+  

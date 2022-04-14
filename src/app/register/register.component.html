@@ -1,0 +1,43 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <h2>Sign Up</h2>
+            <mat-error *ngIf="!registrationValid">
+                Please enter all the details
+            </mat-error>
+            <mat-form-field>
+                <input matInput placeholder="First Name" formControlName="firstName" name="firstName" required>
+                <mat-error>
+                    Please provide a First Name
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Last Name" formControlName="lastName" name="lastName" required>
+                <mat-error>
+                    Please provide a Last Name
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Email" formControlName="email" name="email" required>
+                <mat-error>
+                    Please provide a valid email address
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password" placeholder="Password" formControlName="password" name="password"
+                    required>
+                <mat-error>
+                    Password and Confirm Password do not match
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword"
+                    name="confirmPassword" required>
+                <mat-error>
+                    Password and Confirm Password do not match
+                </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" [disabled]="!form.valid">Submit</button>
+        </form>
+    </mat-card-content>
+</mat-card>

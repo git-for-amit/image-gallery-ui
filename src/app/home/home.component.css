@@ -1,0 +1,12 @@
+.example-card {
+    max-width: 300px;
+  }
+  
+  .example-header-image {
+    background-image: url('/assets/images/muslin-inner.jpg');
+    background-size: cover;
+  }
+  
+  ul {
+    list-style-type: none;
+}

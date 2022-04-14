@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 90vh; }
+body {  font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+h1 {
+    text-align: center;
+  }
+  .mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
+    transform: none !important;
+}
+:root {
+  --unit-1: 4px;
+  --elevation-1: 1;
+  --min-height-carousel: calc(var(--unit-1) * 50);
+  --color-brand-1: #673ab7;
+}
+
+a, a:hover {
+  color: #0093cf;
+}
