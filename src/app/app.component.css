@@ -1,0 +1,8 @@
+::ng-deep .mat-menu-panel {
+    min-height: 36px!important;
+}
+
+.mat-menu-item {
+    line-height: 20px;
+    height: 20px;
+}

@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
 
   isLoginOrSignUpVisible: boolean = false;
   isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
 
 
 
@@ -23,7 +24,13 @@ export class AppComponent implements OnInit {
 
   signOut() {
     sessionStorage.removeItem("userId");
-    this.router.navigate(['/home']);
+    let newUrl = '/home'
+    let currentUrl = this.router.url;
+    if (newUrl == currentUrl) {
+      this.router.navigate(['/']);
+    } else {
+      this.router.navigate(['/home']);
+    }
   }
 
   signIn() {
@@ -56,11 +63,15 @@ export class AppComponent implements OnInit {
         let userId = sessionStorage.getItem('userId');
         if (userId != null) {
           this.isLoggedIn = true;
-          
+
           if (userId.toLowerCase() == 'admin') {
+            this.isAdmin = true;
+          } else {
+            this.isAdmin = false;
           }
         } else {
           this.isLoggedIn = false;
+          this.isAdmin = false;
         }
       }
     });

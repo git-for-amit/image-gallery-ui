@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       this.dataService.signIn(dbUser).subscribe(data => {
         console.log('data ', data)
         sessionStorage.setItem("userId", data['email']);
-        this.router.navigate(["image-gallery"]);
+        this.router.navigate(["products"]);
       }, err => {
         console.log("error while signIn ", err)
       })

@@ -33,7 +33,7 @@ import { CarouselDisplayComponent } from './carousel-display/carousel-display.co
 
 import { MatChipsModule } from '@angular/material/chips';
 import { HomeComponent } from './home/home.component';
-import { ProductsComponent } from './products/products.component'
+import { ProductsComponent } from './products/products.component';
 
 
 @NgModule({

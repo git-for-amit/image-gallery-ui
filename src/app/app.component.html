@@ -8,10 +8,14 @@
       <a mat-button routerLink="/quality-assurance">Quality Assurance</a>
       <a mat-button routerLink="/about-us">About Us</a>
       <a mat-button routerLink="/contact">Contact</a>
+      <button mat-button [matMenuTriggerFor]="settingMenu" *ngIf="isLoggedIn && isAdmin">Settings</button>
+      <mat-menu #settingMenu="matMenu" yPosition="below">
+        <button mat-menu-item routerLink="/list-users"><mat-icon>how_to_reg</mat-icon>User Approval</button>
+      </mat-menu>
     </div>
     <div fxFlex fxLayoutAlign="end start">
-      
-      <button mat-button *ngIf="showSignUp" (click)="signUp()" >
+
+      <button mat-button *ngIf="showSignUp" (click)="signUp()">
         <mat-icon>app_registration</mat-icon>
         Sign Up
       </button>
@@ -26,6 +30,6 @@
     </div>
 
   </mat-toolbar>
-  
+
 </div>
 <router-outlet></router-outlet>
