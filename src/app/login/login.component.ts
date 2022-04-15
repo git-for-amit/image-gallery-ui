@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { DBUser } from '../list-users/db-users';
+import { NotificationService } from '../notification.service';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { DBUser } from '../list-users/db-users';
 })
 export class LoginComponent implements OnInit {
   
+
   loginValid: boolean = true;
   ngOnInit(): void {
   }
@@ -28,8 +30,15 @@ export class LoginComponent implements OnInit {
       }
       this.dataService.signIn(dbUser).subscribe(data => {
         console.log('data ', data)
-        sessionStorage.setItem("userId", data['email']);
-        this.router.navigate(["products"]);
+        if (data['approved'] == "no") {
+          this.notificationService.alert("User is not approved by the Admininstrator", "Approval Required", () => {
+            
+          });
+        } else {
+          sessionStorage.setItem("userId", data['email']);
+          this.router.navigate(["products"]);
+        }
+
       }, err => {
         console.log("error while signIn ", err)
       })
@@ -39,7 +48,7 @@ export class LoginComponent implements OnInit {
 
   @Output() submitEM = new EventEmitter();
 
-  constructor(private dataService: DataService, private router: Router) {
+  constructor(private dataService: DataService, private router: Router, private notificationService: NotificationService) {
 
   }
 }

@@ -35,6 +35,16 @@
                     <td mat-cell *matCellDef="let row"> {{row.email}} </td>
                 </ng-container>
 
+                <ng-container matColumnDef="approved">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Approve </th>
+                    <td mat-cell *matCellDef="let row">
+                        <button mat-button *ngIf="row.email != 'admin'" (click)="approve(row.id, row.approved)">
+                            <mat-icon title="Disapprove User" *ngIf="row.approved == 'yes'">close</mat-icon>
+                            <mat-icon title="Approve User" *ngIf="row.approved == 'no'">done</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 

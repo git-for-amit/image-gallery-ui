@@ -8,4 +8,5 @@ export interface DBUser {
     password?: string;
     email?: string;
     roles?: string [];
+    approved?: string;
 }

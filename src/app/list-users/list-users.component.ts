@@ -53,7 +53,7 @@ const NAMES: string[] = [
 })
 export class ListUsersComponent implements AfterViewInit, OnInit {
 
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email'];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'approved'];
   dataSource: MatTableDataSource<DBUser>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -61,7 +61,7 @@ export class ListUsersComponent implements AfterViewInit, OnInit {
 
 
   constructor(private dataService: DataService) {
-    
+
   }
 
   ngOnInit(): void {
@@ -84,6 +84,28 @@ export class ListUsersComponent implements AfterViewInit, OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  approve(id, approved) {
+    let sendApprove = 'no';
+    if (approved == 'no') {
+      sendApprove = 'yes';
+    }
+    console.log('value of id ', id, ' value of approved ', approved);
+    let dbUser: DBUser = {
+      id: id,
+      approved: sendApprove
+    }
+    this.dataService.approve(dbUser).subscribe(data => {
+      let dataSourceData = this.dataSource.data;
+      for (let d of dataSourceData) {
+        if (d.id == id) {
+          d.approved = data['approved']
+        }
+      }
+    }, err => {
+
+    })
   }
 }
 

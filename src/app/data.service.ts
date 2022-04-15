@@ -12,7 +12,7 @@ import { Util } from './util';
 })
 export class DataService {
 
-  slides: SlideUrl [] = []
+  slides: SlideUrl[] = []
 
   url = `${Util.baseUrl}`;
   constructor(private http: HttpClient) { }
@@ -32,8 +32,13 @@ export class DataService {
     return this.http.post(singUpUrl, user);
   }
 
-  getImageFileNames(): Observable<FileNameList>{
+  getImageFileNames(): Observable<FileNameList> {
     let getImageNames = this.url + 'images/admin';
     return this.http.get<FileNameList>(getImageNames);
+  }
+
+  approve(user: DBUser) {
+    let approveUrl = this.url + 'users/approve';
+    return this.http.post(approveUrl, user);
   }
 }
