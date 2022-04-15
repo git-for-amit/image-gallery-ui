@@ -1,9 +1,30 @@
 .example-card {
     max-width: 300px;
+    cursor: pointer;
   }
   
-  .example-header-image {
+  .infant-header-image {
     background-image: url('/assets/images/muslin-inner.jpg');
+    background-size: cover;
+  }
+
+  .home-textile-header-image {
+    background-image: url('/assets/images/home-textile-b.jpg');
+    background-size: cover;
+  }
+
+  .yarn-header-image {
+    background-image: url('/assets/images/ring-spun-yarn-inner.jpg');
+    background-size: cover;
+  }
+
+  .woven-fabrics-header-image {
+    background-image: url('/assets/images/woven-inner.jpg');
+    background-size: cover;
+  }
+
+  .rubber-thread-header-image {
+    background-image: url('/assets/images/rubber-thread-1.jpg');
     background-size: cover;
   }
   

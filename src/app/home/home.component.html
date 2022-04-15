@@ -18,8 +18,8 @@
 <div fxLayout="row" fxLayoutAlign="space-between">
 
     <mat-card class="example-card">
-        <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-header (click)="navigateToSite('infant')">
+            <div mat-card-avatar class="infant-header-image"></div>
             <mat-card-title>Infant & Baby</mat-card-title>
             <mat-card-subtitle><a href="http://premeuropa.com/muslin-squares.html">Cloth Diapers - Muslin
                     Squares</a>
@@ -43,9 +43,9 @@
 
     </mat-card>
 
-    <mat-card class="example-card">
+    <mat-card class="example-card" (click)="navigateToSite('homeTextile')">
         <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
+            <div mat-card-avatar class="home-textile-header-image"></div>
             <mat-card-title>Home Textiles</mat-card-title>
             <mat-card-subtitle>&nbsp;
             </mat-card-subtitle>
@@ -66,9 +66,9 @@
 
     </mat-card>
 
-    <mat-card class="example-card">
+    <mat-card class="example-card" (click)="navigateToSite('wovenFabrics')">
         <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
+            <div mat-card-avatar class="woven-fabrics-header-image"></div>
             <mat-card-title>Woven Fabrics</mat-card-title>
             <mat-card-subtitle>&nbsp;
             </mat-card-subtitle>
@@ -93,9 +93,9 @@
 
     </mat-card>
 
-    <mat-card class="example-card">
+    <mat-card class="example-card" (click)="navigateToSite('yarn')">
         <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
+            <div mat-card-avatar class="yarn-header-image"></div>
             <mat-card-title>Yarns</mat-card-title>
             <mat-card-subtitle>&nbsp;
             </mat-card-subtitle>
@@ -114,9 +114,9 @@
 
     </mat-card>
 
-    <mat-card class="example-card">
+    <mat-card class="example-card" (click)="navigateToSite('rubberThread')">
         <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
+            <div mat-card-avatar class="rubber-thread-header-image"></div>
             <mat-card-title>Rubber Thread</mat-card-title>
             <mat-card-subtitle>&nbsp;
             </mat-card-subtitle>

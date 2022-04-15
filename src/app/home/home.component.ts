@@ -25,4 +25,25 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  navigateToSite(pageName) {
+    let url = '';
+    switch (pageName) {
+      case "yarn":
+        url = 'http://premeuropa.com/yarns-products.html'
+        break;
+      case "homeTextile":
+        url = 'http://premeuropa.com/home-textiles-products.html'
+        break;
+      case "wovenFabrics":
+        url = 'http://premeuropa.com/home-textiles-products.html'
+        break;
+      case "rubberThread":
+        url = 'http://premeuropa.com/yarns-threads-products.html'
+        break;
+      case "infant":
+        url = 'http://premeuropa.com/muslin-squares.html';
+        break;
+    }
+    window.open(url, '_blank');
+  }
 }
