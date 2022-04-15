@@ -67,6 +67,6 @@ export class ImageGalleryComponent implements OnInit {
   }
   openCarousel() {
     this.dataService.slides = this.slides;
-    this.router.navigate(['/carousel-display']);
+    this.router.navigate(['/product-description']);
   }
 }

@@ -15,8 +15,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'list-users', component: ListUsersComponent},
   { path: 'file-upload', component: FileUploadComponent},
-  { path: 'image-gallery', component: ImageGalleryComponent},
-  { path: 'carousel-display', component: CarouselDisplayComponent},
+  { path: 'products', component: ImageGalleryComponent},
+  { path: 'product-description', component: CarouselDisplayComponent},
   { path: 'home', component: HomeComponent},
   { path: 'products', component: ProductsComponent},
 ];
