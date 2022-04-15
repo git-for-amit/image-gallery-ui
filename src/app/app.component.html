@@ -1,16 +1,10 @@
 <div style="position: -webkit-sticky; position: sticky;top: 0px;z-index: 1000;">
   <mat-toolbar style="background-color:white;">
-    <div fxShow="true" fxHide.gt-sm="true">
-      <button mat-icon-button>
-        <mat-icon>menu</mat-icon>
-      </button>
-    </div>
-
-    <img src="assets/images/logo_prem_international.jpg" height="54px" />
+    <img src="assets/images/logo_prem_international.jpg" height="54px" style="cursor: pointer;" (click)="home()" />
     <span style="margin: 30px;"></span>
-    <div fxShow="true" fxHide.lt-md="true" *ngIf="showLogout">
+    <div fxShow="true" fxHide.lt-md="true" *ngIf="isLoginOrSignUpVisible == false">
       <a mat-button routerLink="/home">Home</a>
-      <a mat-button routerLink="/products">Products</a>
+      <a mat-button routerLink="/image-gallery" *ngIf="isLoggedIn == true">Products</a>
       <a mat-button routerLink="/quality-assurance">Quality Assurance</a>
       <a mat-button routerLink="/about-us">About Us</a>
       <a mat-button routerLink="/contact">Contact</a>
@@ -21,31 +15,17 @@
         <mat-icon>app_registration</mat-icon>
         Sign Up
       </button>
-      <button mat-button *ngIf="showLogout" (click)="signOut()">
+      <button mat-button *ngIf="isLoggedIn == true" (click)="signOut()">
         <mat-icon>exit_to_app</mat-icon>
         Sign Out
       </button>
-      <button mat-button *ngIf="showLogin" (click)="signIn()">
+      <button mat-button *ngIf="isLoggedIn == false && showSignUp == false" (click)="signIn()">
         <mat-icon>power_settings_new</mat-icon>
         Sign In
       </button>
     </div>
 
   </mat-toolbar>
-  <mat-sidenav-container fxFlexFill class="example-container">
-
-    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true"
-      *ngIf="showLogout">
-      <div fxLayout="column">
-        <a mat-button routerLink="/home">Home</a>
-        <a mat-button routerLink="/products">Products</a>
-        <a mat-button routerLink="/quality-assurance">Quality Assurance</a>
-        <a mat-button routerLink="/about-us">About Us</a>
-        <a mat-button routerLink="/contact">Contact</a>
-      </div>
-    </mat-sidenav>
-    <mat-sidenav-content fxFlexFill>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+  
 </div>
 <router-outlet></router-outlet>

@@ -10,12 +10,10 @@ import { filter, pairwise } from 'rxjs';
 export class AppComponent implements OnInit {
   title = 'Prem International Showroom';
   showSignUp: boolean = false;
-  showLogout: boolean = false;
-  showLogin: boolean = false;
   isLoginVisible: boolean = true;
 
-
-
+  isLoginOrSignUpVisible: boolean = false;
+  isLoggedIn: boolean = false;
 
 
 
@@ -24,7 +22,8 @@ export class AppComponent implements OnInit {
   }
 
   signOut() {
-    this.router.navigate(['/login']);
+    sessionStorage.removeItem("userId");
+    this.router.navigate(['/home']);
   }
 
   signIn() {
@@ -35,25 +34,34 @@ export class AppComponent implements OnInit {
     this.router.navigate(['/register']);
   }
 
+  home() {
+    this.router.navigate(['/home']);
+  }
 
   ngOnInit(): void {
     this.router.events.subscribe(events => {
       if (events instanceof NavigationEnd) {
-        console.log('url ', this.router.url);
         if (this.router.url == '/login') {
           this.showSignUp = true;
-          this.showLogin = false;
-          this.showLogout = false;
+          this.isLoginOrSignUpVisible = true;
         } else if (this.router.url == '/register') {
           this.showSignUp = false;
-          this.showLogin = true;
-          this.showLogout = false;
+          this.isLoginOrSignUpVisible = true;
         } else {
           this.showSignUp = false;
-          this.showLogin = false;
-          this.showLogout = true;
+          this.isLoginOrSignUpVisible = false;
         }
 
+
+        let userId = sessionStorage.getItem('userId');
+        if (userId != null) {
+          this.isLoggedIn = true;
+          
+          if (userId.toLowerCase() == 'admin') {
+          }
+        } else {
+          this.isLoggedIn = false;
+        }
       }
     });
   }

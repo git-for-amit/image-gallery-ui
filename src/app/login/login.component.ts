@@ -27,6 +27,8 @@ export class LoginComponent implements OnInit {
         password: this.form.value["password"]
       }
       this.dataService.signIn(dbUser).subscribe(data => {
+        console.log('data ', data)
+        sessionStorage.setItem("userId", data['email']);
         this.router.navigate(["image-gallery"]);
       }, err => {
         console.log("error while signIn ", err)
