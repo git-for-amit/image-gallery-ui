@@ -34,7 +34,7 @@ export class ImageGalleryComponent implements OnInit {
 
         for (let i = 0; i < fileNameList.length; i++) {
           let title = fileNameList[i].substring(fileNameList[i].lastIndexOf('/') + 1);
-          let src = `${Util.baseUrl}/${fileNameList[i]}`
+          let src = `${Util.baseUrl}${fileNameList[i]}`
           this.slides.push({
             "url": encodeURI(src)
           })
