@@ -12,13 +12,13 @@ import { RegisterComponent } from './register/register.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent},
-  { path: 'list-users', component: ListUsersComponent},
-  { path: 'file-upload', component: FileUploadComponent},
-  { path: 'products', component: ImageGalleryComponent},
-  { path: 'product-description', component: CarouselDisplayComponent},
-  { path: 'home', component: HomeComponent},
-  { path: 'products', component: ProductsComponent},
+  { path: 'register', component: RegisterComponent },
+  { path: 'list-users', component: ListUsersComponent },
+  { path: 'file-upload', component: FileUploadComponent },
+  { path: 'products', component: ImageGalleryComponent },
+  { path: 'product-description', component: CarouselDisplayComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'products', component: ProductsComponent },
 ];
 
 @NgModule({

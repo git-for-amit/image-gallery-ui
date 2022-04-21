@@ -6,7 +6,7 @@
 <div layout-margin *ngFor="let listOfPictures of listOfListOfPictures">
     <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="center">
         <mat-card class="card-picture" *ngFor="let picture of listOfPictures" class="example" >
-            <img mat-card-image [src]="picture.src" (click)="openCarousel()">
+            <img mat-card-image [src]="picture.src | addAuthorization | async" (click)="openCarousel()">
             <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
                 <span fxFlex="80%">{{picture.title}}</span>
             </mat-card-title>

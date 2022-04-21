@@ -34,6 +34,7 @@ import { CarouselDisplayComponent } from './carousel-display/carousel-display.co
 import { MatChipsModule } from '@angular/material/chips';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
+import { AddAuthorizationPipe } from './add-authorization.pipe';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ProductsComponent } from './products/products.component';
     CarouselDialogComponent,
     CarouselDisplayComponent,
     HomeComponent,
-    ProductsComponent
+    ProductsComponent,
+    AddAuthorizationPipe
   ],
   imports: [
     BrowserModule,

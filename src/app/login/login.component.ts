@@ -11,7 +11,7 @@ import { NotificationService } from '../notification.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
+
 
   loginValid: boolean = true;
   ngOnInit(): void {
@@ -32,10 +32,11 @@ export class LoginComponent implements OnInit {
         console.log('data ', data)
         if (data['approved'] == "no") {
           this.notificationService.alert("User is not approved by the Admininstrator", "Approval Required", () => {
-            
+
           });
         } else {
           sessionStorage.setItem("userId", data['email']);
+          sessionStorage.setItem("token", data['token']);
           this.router.navigate(["products"]);
         }
 

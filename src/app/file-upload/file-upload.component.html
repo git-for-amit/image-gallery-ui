@@ -1,1 +1,15 @@
-<p>file-upload works!</p>
+<mat-card class="example-card">
+    <mat-card-title>Upload Files</mat-card-title>
+    <mat-card-content>
+        <input #imageFileUpload id="image-file-upload" type="file" name="imageFileUpload" accept="image/*" multiple />
+        <label for="image-file-upload">
+            <p>Select image files</p>
+            <button mat-raised-button (click)="imageFileUpload.click()">Upload Image File</button>
+        </label>
+    </mat-card-content>
+    <mat-card-actions fxLayoutAlign="end ënd">
+        <button mat-button>Next</button>
+    </mat-card-actions>
+    <mat-card-footer>
+    </mat-card-footer>
+</mat-card>
