@@ -35,6 +35,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { AddAuthorizationPipe } from './add-authorization.pipe';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { AddAuthorizationPipe } from './add-authorization.pipe';
     HttpClientModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatChipsModule
+    MatChipsModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

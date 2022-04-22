@@ -1,10 +1,10 @@
-<mat-card [ngClass]="{'display-block': isVisible, 'display-none': !isVisible }">
+<mat-card [ngClass]="{'display-none': tabName != 0, 'display-block': tabName == 0 }">
     <mat-card-title>
         <mat-icon>image</mat-icon> &nbsp;Upload Image Files
     </mat-card-title>
     <mat-card-content>
         <input #imageFileUpload id="image-file-upload" type="file" name="imageFileUpload" accept="image/*" multiple
-            (change)="selectImageFiles($event)" />
+            (change)="updateSelectImageFiles($event)" />
         <label for="image-file-upload">
             <p>
                 {{imageFileSelectionTitle}}
@@ -18,13 +18,13 @@
     <mat-card-footer>
     </mat-card-footer>
 </mat-card>
-<mat-card [ngClass]="{'display-none': isVisible, 'display-block': !isVisible }">
+<mat-card [ngClass]="{'display-none': tabName != 1, 'display-block': tabName == 1  }">
     <mat-card-title>
         <mat-icon>description</mat-icon> &nbsp;Upload Excel File
     </mat-card-title>
     <mat-card-content>
         <input #excelFileUpload id="excel-file-upload" type="file" name="excelFileUpload" accept=".xls, .xlsx"
-            (change)="selectExcelFile($event)" />
+            (change)="updateSelectExcelFile($event)" />
         <label for="excel-file-upload">
             <p>
                 {{excelFileSelectionTitle}}
@@ -38,4 +38,16 @@
     </mat-card-actions>
     <mat-card-footer>
     </mat-card-footer>
+</mat-card>
+<mat-card [ngClass]="{'display-none': tabName != 2, 'display-block': tabName == 2 }">
+    <mat-card-title>
+        <mat-icon>{{iconSuccessOrFailure}}</mat-icon> &nbsp;{{successOrFailureTitle}}
+    </mat-card-title>
+    <mat-card-content>
+
+        <p>
+            {{successOrFailureContent}}
+        </p>
+
+    </mat-card-content>
 </mat-card>
