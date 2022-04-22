@@ -11,8 +11,15 @@
       <a mat-button routerLink="/contact">Contact</a>
       <button mat-button [matMenuTriggerFor]="settingMenu" *ngIf="isLoggedIn && isAdmin">Settings</button>
       <mat-menu #settingMenu="matMenu" yPosition="below">
-        <button mat-menu-item routerLink="/list-users"><mat-icon>how_to_reg</mat-icon>User Approval</button>
-        <button mat-menu-item routerLink="/file-upload"><mat-icon>upload</mat-icon>Upload</button>
+        <button mat-menu-item routerLink="/list-users">
+          <mat-icon>how_to_reg</mat-icon>User Approval
+        </button>
+        <button mat-menu-item routerLink="/file-upload">
+          <mat-icon>upload</mat-icon>Upload Files
+        </button>
+        <button mat-menu-item routerLink="/image-assignment">
+          <mat-icon>library_add_check</mat-icon>Image Assignment
+        </button>
       </mat-menu>
     </div>
     <div fxFlex fxLayoutAlign="end start">

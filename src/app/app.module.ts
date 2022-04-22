@@ -36,6 +36,7 @@ import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { AddAuthorizationPipe } from './add-authorization.pipe';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { ImageAssignmentComponent } from './image-assignment/image-assignment.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     CarouselDisplayComponent,
     HomeComponent,
     ProductsComponent,
-    AddAuthorizationPipe
+    AddAuthorizationPipe,
+    ImageAssignmentComponent
   ],
   imports: [
     BrowserModule,

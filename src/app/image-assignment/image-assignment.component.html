@@ -1,0 +1,13 @@
+<h1>Select Images</h1>
+<div layout-margin *ngFor="let listOfPictures of listOfListOfPictures">
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="center">
+        <mat-card class="card-picture" *ngFor="let picture of listOfPictures" class="example">
+            <div class="img-container">
+                <img mat-card-image [src]="picture.src | addAuthorization | async" (click)="highlightImage(picture)">
+                <mat-icon class="display-none" [attr.data-pic-title]="picture.title" [attr.data-pic-id]="picture.id"
+                    [ngClass]="{'display-block': picture.selected, 'checked': picture.selected}">check_circle
+                </mat-icon>
+            </div>
+        </mat-card>
+    </div>
+</div>

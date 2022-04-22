@@ -1,0 +1,61 @@
+mat-card img {
+  object-fit: cover;
+  /*this makes the image in src fit to the size specified below*/
+  cursor: pointer;
+}
+
+.example {
+  margin: 1em 0;
+}
+
+.example img {
+  width: 10vw;
+  height: 10vw;
+}
+
+.img-container {
+  position: relative;
+}
+
+.img-container img {
+  display: block;
+}
+
+.img-container .checked {
+  position: absolute;
+  top: 1px;
+  left: -1px;
+  color: #0093cf;
+}
+
+.mat-card-image {
+  margin: auto;
+}
+
+.mat-card-image:first-child {
+  margin: auto;
+}
+
+.display-none {
+  display: none;
+}
+
+.display-block {
+  display: block;
+}
+
+mat-card:hover {
+  border-color: #0093cf;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 2px;
+  ;
+}
+
+.selected {
+  border-color: #0093cf;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 2px;
+  ;
+}

@@ -5,19 +5,16 @@ import { DataService } from '../data.service';
 import { Util } from '../util';
 
 
-
 @Component({
-  selector: 'app-image-gallery',
-  templateUrl: './image-gallery.component.html',
-  styleUrls: ['./image-gallery.component.css']
+  selector: 'app-image-assignment',
+  templateUrl: './image-assignment.component.html',
+  styleUrls: ['./image-assignment.component.css']
 })
-export class ImageGalleryComponent implements OnInit {
+export class ImageAssignmentComponent implements OnInit {
 
   listOfListOfPictures: any[] = [];
 
   copyListOfListOfPictures: any[] = []
-
-  slides: SlideUrl[] = []
 
   constructor(private dataService: DataService, private router: Router) { }
 
@@ -30,20 +27,18 @@ export class ImageGalleryComponent implements OnInit {
     this.dataService.getImageFileNames(userId).subscribe(res => {
       let fileNameList = res.fileNameList
       if (fileNameList != null) {
-        let divisor = 3;
+        let divisor = 4;
         let pictures: any[] = []
 
         for (let i = 0; i < fileNameList.length; i++) {
           let title = fileNameList[i].substring(fileNameList[i].lastIndexOf('/') + 1);
           let src = `${Util.baseUrl}${fileNameList[i]}`
           let srcCopy = `${Util.baseUrl}${fileNameList[i]}?add-colon=true`
-          this.slides.push({
-            "url": encodeURI(srcCopy)
-          })
           let p = {
             id: i,
             title: title,
-            src: src
+            src: src,
+            selected: false
 
           }
           if (i < divisor) {
@@ -64,11 +59,7 @@ export class ImageGalleryComponent implements OnInit {
     })
   }
 
-  search(e: string) {
-
-  }
-  openCarousel() {
-    this.dataService.slides = this.slides;
-    this.router.navigate(['/product-description']);
+  highlightImage(p) {
+    p.selected = !p.selected;
   }
 }

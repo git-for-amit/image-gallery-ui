@@ -32,8 +32,8 @@ export class DataService {
     return this.http.post(singUpUrl, user);
   }
 
-  getImageFileNames(): Observable<FileNameList> {
-    let getImageNames = this.url + 'images/admin';
+  getImageFileNames(userId: string): Observable<FileNameList> {
+    let getImageNames = this.url + `images/${userId}`;
     return this.http.get<FileNameList>(getImageNames);
   }
 
