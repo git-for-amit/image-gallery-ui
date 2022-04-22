@@ -36,7 +36,6 @@ import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { AddAuthorizationPipe } from './add-authorization.pipe';
 
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -41,4 +41,9 @@ export class DataService {
     let approveUrl = this.url + 'users/approve';
     return this.http.post(approveUrl, user);
   }
+
+  upload(formData: FormData) {
+    let uploadUrl = this.url + 'images/upload-all';
+    return this.http.post(uploadUrl, formData);
+  }
 }
