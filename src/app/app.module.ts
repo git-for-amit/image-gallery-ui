@@ -37,6 +37,8 @@ import { ProductsComponent } from './products/products.component';
 import { AddAuthorizationPipe } from './add-authorization.pipe';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ImageAssignmentComponent } from './image-assignment/image-assignment.component';
+import { MatListModule } from '@angular/material/list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,9 @@ import { ImageAssignmentComponent } from './image-assignment/image-assignment.co
     MatSnackBarModule,
     MatDialogModule,
     MatChipsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatListModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

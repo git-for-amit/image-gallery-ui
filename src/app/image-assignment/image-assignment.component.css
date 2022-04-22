@@ -59,3 +59,11 @@ mat-card:hover {
   border-width: 2px;
   ;
 }
+
+::ng-deep .mat-chip-list-stacked .mat-chip-list-wrapper .mat-standard-chip {
+  width: auto !important;
+}
+
+:host {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
