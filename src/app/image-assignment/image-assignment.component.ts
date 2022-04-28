@@ -25,7 +25,7 @@ export class ImageAssignmentComponent implements OnInit {
 
   successOrFailure: string = "Success"
 
-  displayedColumns: string[] = ['select', 'id', 'firstName', 'lastName', 'email', 'approved'];
+  displayedColumns: string[] = ['select', 'firstName', 'lastName', 'email'];
   dataSource: MatTableDataSource<DBUser>;
 
   selection = new SelectionModel<DBUser>(true, []);
