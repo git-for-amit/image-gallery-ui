@@ -6,7 +6,7 @@
                 <div class="img-container">
                     <img mat-card-image [src]="picture.src | addAuthorization | async"
                         (click)="highlightImage(picture)">
-                    <mat-icon class="display-none" [attr.data-pic-title]="picture.title" [attr.data-pic-id]="picture.id"
+                    <mat-icon #matIconRef class="display-none" [attr.data-pic-title]="picture.title" [attr.data-pic-id]="picture.id"
                         [ngClass]="{'display-block': picture.selected, 'checked': picture.selected}">check_circle
                     </mat-icon>
                 </div>

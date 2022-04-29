@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { DataService } from '../data.service';
 import { NgxSpinnerService } from "ngx-spinner";
+import { Router } from '@angular/router';
 
 enum UploadTabName {
   ImageFileTab,
@@ -55,7 +56,7 @@ export class FileUploadComponent implements OnInit {
 
 
 
-  constructor(private dataService: DataService, private spinner: NgxSpinnerService) {
+  constructor(private dataService: DataService, private spinner: NgxSpinnerService, private router: Router) {
     this.imageFileSelectionTitle = this.DEFAULT_IMAGE_SELECTION_TITLE;
     this.excelFileSelectionTitle = this.DEFAULT_EXCEL_SELECTION_TITLE;
   }
@@ -112,11 +113,12 @@ export class FileUploadComponent implements OnInit {
   resetView() {
     this.imageFileSelectionTitle = this.DEFAULT_IMAGE_SELECTION_TITLE;
     this.excelFileSelectionTitle = this.DEFAULT_EXCEL_SELECTION_TITLE;
-    this.tabName = UploadTabName.ImageFileTab;
+    //this.tabName = UploadTabName.ImageFileTab;
     this.selectedExcelFileList = new FileList();
     this.selectedImageFileList = new FileList();
     this.imageFileUploadElementRef.nativeElement.value = '';
     this.excelFileUploadElementRef.nativeElement.value = '';
+    this.router.navigate(['/home']);
   }
 
   updateSelectImageFiles(event: any) {

@@ -1,5 +1,6 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
+import { MatIcon } from '@angular/material/icon';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { SlideUrl } from '../carousel-dialog/slides-url';
@@ -28,6 +29,8 @@ export class ImageAssignmentComponent implements OnInit {
   displayedColumns: string[] = ['select', 'firstName', 'lastName', 'email'];
   dataSource: MatTableDataSource<DBUser>;
 
+  @ViewChildren('matIconRef') matIconRefList: QueryList<ElementRef>
+
   selection = new SelectionModel<DBUser>(true, []);
 
   constructor(private dataService: DataService, private router: Router) { }
@@ -54,23 +57,28 @@ export class ImageAssignmentComponent implements OnInit {
       console.log("error while calling api ", err)
     });
   }
+
   getImageFileNames() {
     let userId = sessionStorage.getItem("userId") as string;
-    this.dataService.getImageFileNames(userId).subscribe(res => {
-      let fileNameList = res.fileNameList
-      if (fileNameList != null) {
+    this.dataService.getImageObjects(userId).subscribe(res => {
+      let imageFileObjectList = res.images
+      if (imageFileObjectList != null) {
         let divisor = 4;
         let pictures: any[] = []
 
-        for (let i = 0; i < fileNameList.length; i++) {
-          let title = fileNameList[i].substring(fileNameList[i].lastIndexOf('/') + 1);
-          let src = `${Util.baseUrl}${fileNameList[i]}`
+        for (let i = 0; i < imageFileObjectList.length; i++) {
+
+          let title = imageFileObjectList[i].filename;
+          let src = `${Util.baseUrl}${imageFileObjectList[i].relativePath}`
+          let code = imageFileObjectList[i].code;
+          let categoryname = imageFileObjectList[i].categoryname;
           let p = {
             id: i,
             title: title,
             src: src,
-            selected: false
-
+            selected: false,
+            code: code,
+            categoryname: categoryname
           }
           if (i < divisor) {
             pictures.push(p);
@@ -80,6 +88,9 @@ export class ImageAssignmentComponent implements OnInit {
             pictures.push(p)
           } else {
             pictures.push(p);
+          }
+          if (i == imageFileObjectList.length - 1) {
+            this.listOfListOfPictures.push(pictures);
           }
         }
         this.copyListOfListOfPictures = this.listOfListOfPictures.slice(0);
@@ -95,6 +106,15 @@ export class ImageAssignmentComponent implements OnInit {
   }
 
   next() {
+    let selectedPicList: any[] = []
+    for (let lp of this.listOfListOfPictures) {
+      for (let p of lp) {
+        if (p.selected) {
+          selectedPicList.push(p);
+        }
+      }
+    }
+    console.log(selectedPicList);
     this.whichTab = 'select-users';
   }
 
@@ -104,7 +124,7 @@ export class ImageAssignmentComponent implements OnInit {
 
   finish() {
     this.whichTab = 'show-msg';
-
+    console.log("asdda ", this.selection)
   }
 
   isAllSelected() {
@@ -117,6 +137,8 @@ export class ImageAssignmentComponent implements OnInit {
   masterToggle() {
     this.isAllSelected() ?
       this.selection.clear() :
-      this.dataSource.data.forEach(row => this.selection.select(row));
+      this.dataSource.data.forEach(row => {
+        this.selection.select(row)
+      });
   }
 }

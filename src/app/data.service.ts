@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { SlideUrl } from './carousel-dialog/slides-url';
+import { ImageList } from './image-assignment/image-list';
 import { FileNameList } from './image-gallery/file-name-list';
 import { DBUser } from './list-users/db-users';
 import { Util } from './util';
@@ -37,12 +38,22 @@ export class DataService {
     return this.http.get<FileNameList>(getImageNames);
   }
 
+  getImageObjects(userId: string): Observable<ImageList> {
+    let getImageNames = this.url + `images/${userId}`;
+    return this.http.get<ImageList>(getImageNames);
+  }
+
   approve(user: DBUser) {
     let approveUrl = this.url + 'users/approve';
     return this.http.post(approveUrl, user);
   }
 
   upload(formData: FormData) {
+    let uploadUrl = this.url + 'images/upload-all';
+    return this.http.post(uploadUrl, formData);
+  }
+
+  assign(formData: FormData) {
     let uploadUrl = this.url + 'images/upload-all';
     return this.http.post(uploadUrl, formData);
   }

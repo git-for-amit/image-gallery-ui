@@ -1,7 +1,7 @@
 
 
 export interface DBUser {
-    id?: number,
+    id?: number;
     username?: string;
     firstName?: string;
     lastName?: string;

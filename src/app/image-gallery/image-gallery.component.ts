@@ -27,16 +27,18 @@ export class ImageGalleryComponent implements OnInit {
 
   getImageFileNames() {
     let userId = sessionStorage.getItem("userId") as string;
-    this.dataService.getImageFileNames(userId).subscribe(res => {
-      let fileNameList = res.fileNameList
-      if (fileNameList != null) {
+    this.dataService.getImageObjects(userId).subscribe(res => {
+      let imageFileObjectList = res.images
+      if (imageFileObjectList != null) {
         let divisor = 3;
         let pictures: any[] = []
 
-        for (let i = 0; i < fileNameList.length; i++) {
-          let title = fileNameList[i].substring(fileNameList[i].lastIndexOf('/') + 1);
-          let src = `${Util.baseUrl}${fileNameList[i]}`
-          let srcCopy = `${Util.baseUrl}${fileNameList[i]}?add-colon=true`
+        for (let i = 0; i < imageFileObjectList.length; i++) {
+          let title = imageFileObjectList[i].filename;
+          let src = `${Util.baseUrl}${imageFileObjectList[i].relativePath}`
+          let code = imageFileObjectList[i].code;
+          let categoryname = imageFileObjectList[i].categoryname;
+          let srcCopy = `${Util.baseUrl}${imageFileObjectList[i].relativePath}?add-colon=true`
           this.slides.push({
             "url": encodeURI(srcCopy)
           })
@@ -54,6 +56,9 @@ export class ImageGalleryComponent implements OnInit {
             pictures.push(p)
           } else {
             pictures.push(p);
+          }
+          if (i == imageFileObjectList.length - 1) {
+            this.listOfListOfPictures.push(pictures);
           }
         }
         this.copyListOfListOfPictures = this.listOfListOfPictures.slice(0);
