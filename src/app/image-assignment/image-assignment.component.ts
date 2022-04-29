@@ -7,6 +7,7 @@ import { SlideUrl } from '../carousel-dialog/slides-url';
 import { DataService } from '../data.service';
 import { DBUser } from '../list-users/db-users';
 import { Util } from '../util';
+import { Image } from './image';
 
 
 @Component({
@@ -32,6 +33,8 @@ export class ImageAssignmentComponent implements OnInit {
   @ViewChildren('matIconRef') matIconRefList: QueryList<ElementRef>
 
   selection = new SelectionModel<DBUser>(true, []);
+
+  selectedPicList: any[] = []
 
   constructor(private dataService: DataService, private router: Router) { }
 
@@ -67,13 +70,13 @@ export class ImageAssignmentComponent implements OnInit {
         let pictures: any[] = []
 
         for (let i = 0; i < imageFileObjectList.length; i++) {
-
+          let id = imageFileObjectList[i].id;
           let title = imageFileObjectList[i].filename;
           let src = `${Util.baseUrl}${imageFileObjectList[i].relativePath}`
           let code = imageFileObjectList[i].code;
           let categoryname = imageFileObjectList[i].categoryname;
           let p = {
-            id: i,
+            id: id,
             title: title,
             src: src,
             selected: false,
@@ -106,15 +109,14 @@ export class ImageAssignmentComponent implements OnInit {
   }
 
   next() {
-    let selectedPicList: any[] = []
+    this.selectedPicList = []
     for (let lp of this.listOfListOfPictures) {
       for (let p of lp) {
         if (p.selected) {
-          selectedPicList.push(p);
+          this.selectedPicList.push(p);
         }
       }
     }
-    console.log(selectedPicList);
     this.whichTab = 'select-users';
   }
 
@@ -123,8 +125,42 @@ export class ImageAssignmentComponent implements OnInit {
   }
 
   finish() {
-    this.whichTab = 'show-msg';
+
     console.log("asdda ", this.selection)
+
+    if (this.selectedPicList && this.selection.selected) {
+      let userList: DBUser[] = [];
+      let imageList: Image[] = [];
+      for (let s of this.selectedPicList) {
+        let im = {
+          id: s.id,
+          filename: s.title,
+          code: s.code,
+          categorname: s.categorname
+        }
+        imageList.push(im);
+      }
+
+      for (let s of this.selection.selected) {
+        userList.push({
+          id: s.id,
+          firstName: s.firstName,
+          lastName: s.lastName,
+          email: s.email
+        })
+      }
+      let userImages = {
+        userList,
+        imageList
+      }
+      this.dataService.assign(userImages).subscribe(res => {
+        this.successOrFailure = 'Success';
+        this.whichTab = 'show-msg';
+      }, err => {
+        this.successOrFailure = 'Failed';
+        this.whichTab = 'show-msg';
+      })
+    }
   }
 
   isAllSelected() {

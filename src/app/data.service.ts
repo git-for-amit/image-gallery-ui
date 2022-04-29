@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { SlideUrl } from './carousel-dialog/slides-url';
 import { ImageList } from './image-assignment/image-list';
+import { UserImages } from './image-assignment/user-images';
 import { FileNameList } from './image-gallery/file-name-list';
 import { DBUser } from './list-users/db-users';
 import { Util } from './util';
@@ -53,8 +54,8 @@ export class DataService {
     return this.http.post(uploadUrl, formData);
   }
 
-  assign(formData: FormData) {
-    let uploadUrl = this.url + 'images/upload-all';
-    return this.http.post(uploadUrl, formData);
+  assign(userImages: UserImages) {
+    let uploadUrl = this.url + 'images/assign';
+    return this.http.post(uploadUrl, userImages);
   }
 }

@@ -35,6 +35,7 @@ export class ImageGalleryComponent implements OnInit {
 
         for (let i = 0; i < imageFileObjectList.length; i++) {
           let title = imageFileObjectList[i].filename;
+          let id = imageFileObjectList[i].id;
           let src = `${Util.baseUrl}${imageFileObjectList[i].relativePath}`
           let code = imageFileObjectList[i].code;
           let categoryname = imageFileObjectList[i].categoryname;
@@ -43,10 +44,11 @@ export class ImageGalleryComponent implements OnInit {
             "url": encodeURI(srcCopy)
           })
           let p = {
-            id: i,
+            id: id,
             title: title,
-            src: src
-
+            src: src,
+            code: code,
+            categoryname: categoryname
           }
           if (i < divisor) {
             pictures.push(p);
