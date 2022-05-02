@@ -39,8 +39,11 @@ export class DataService {
     return this.http.get<FileNameList>(getImageNames);
   }
 
-  getImageObjects(userId: string): Observable<ImageList> {
+  getImageObjects(userId: string, categoryname?: string): Observable<ImageList> {
     let getImageNames = this.url + `images/${userId}`;
+    if (categoryname) {
+      getImageNames = `${getImageNames}?categoryname=${categoryname}`;
+    }
     return this.http.get<ImageList>(getImageNames);
   }
 

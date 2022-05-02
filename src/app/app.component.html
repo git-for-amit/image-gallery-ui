@@ -5,7 +5,21 @@
     <span style="margin: 30px;"></span>
     <div fxShow="true" fxHide.lt-md="true" *ngIf="isLoginOrSignUpVisible == false">
       <a mat-button routerLink="/home">Home</a>
-      <a mat-button routerLink="/products" *ngIf="isLoggedIn == true">Products</a>
+      <button mat-button [matMenuTriggerFor]="productsMenu" *ngIf="isLoggedIn == true">Products</button>
+      <mat-menu #productsMenu="matMenu" yPosition="below">
+        <button mat-menu-item routerLink="/products/FABRICS">
+          Fabrics
+        </button>
+        <button mat-menu-item routerLink="/products/MADE UPS">
+          Made Ups
+        </button>
+        <button mat-menu-item routerLink="/products/Baby Products">
+          Baby Products
+        </button>
+        <button mat-menu-item routerLink="/products/Packing Style">
+          Packing Style
+        </button>
+      </mat-menu>
       <a mat-button routerLink="/quality-assurance">Quality Assurance</a>
       <a mat-button routerLink="/about-us">About Us</a>
       <a mat-button routerLink="/contact">Contact</a>
@@ -37,8 +51,6 @@
         Sign In
       </button>
     </div>
-
   </mat-toolbar>
 
-</div>
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>

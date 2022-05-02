@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
         } else {
           sessionStorage.setItem("userId", data['email']);
           sessionStorage.setItem("token", data['token']);
-          this.router.navigate(["products"]);
+          this.router.navigate(["products/FABRICS"]);
         }
 
       }, err => {

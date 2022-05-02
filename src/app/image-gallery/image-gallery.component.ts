@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { SlideUrl } from '../carousel-dialog/slides-url';
 import { DataService } from '../data.service';
 import { Util } from '../util';
@@ -18,16 +18,26 @@ export class ImageGalleryComponent implements OnInit {
   copyListOfListOfPictures: any[] = []
 
   slides: SlideUrl[] = []
+  categoryname: string = 'Fabrics'
+  params: Params;
 
-  constructor(private dataService: DataService, private router: Router) { }
-
-  ngOnInit(): void {
-    this.getImageFileNames()
+  constructor(private dataService: DataService, private router: Router, private activatedRoute: ActivatedRoute) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.activatedRoute.params.subscribe(params => {
+      this.params = params;
+      console.log(this.params)
+    });
   }
 
-  getImageFileNames() {
+  ngOnInit(): void {
+    this.categoryname = this.params['categoryname'];
+    this.getImageFileNames(this.categoryname)
+  }
+
+  getImageFileNames(categoryname?: string) {
     let userId = sessionStorage.getItem("userId") as string;
-    this.dataService.getImageObjects(userId).subscribe(res => {
+
+    this.dataService.getImageObjects(userId, categoryname).subscribe(res => {
       let imageFileObjectList = res.images
       if (imageFileObjectList != null) {
         let divisor = 3;

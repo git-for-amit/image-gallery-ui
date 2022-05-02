@@ -5,5 +5,6 @@ export interface Image {
     attributes?: string;
     code?: string;
     relativePath?: string;
-    categoryname?:string;
+    categoryname?: string;
+    subcategoryname?: string;
 }

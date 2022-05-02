@@ -75,13 +75,15 @@ export class ImageAssignmentComponent implements OnInit {
           let src = `${Util.baseUrl}${imageFileObjectList[i].relativePath}`
           let code = imageFileObjectList[i].code;
           let categoryname = imageFileObjectList[i].categoryname;
+          let subcategoryname = imageFileObjectList[i].subcategoryname;
           let p = {
             id: id,
             title: title,
             src: src,
             selected: false,
             code: code,
-            categoryname: categoryname
+            categoryname: categoryname,
+            subcategoryname: subcategoryname
           }
           if (i < divisor) {
             pictures.push(p);
