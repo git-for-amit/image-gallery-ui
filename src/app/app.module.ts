@@ -39,6 +39,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { ImageAssignmentComponent } from './image-assignment/image-assignment.component';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatChipsModule,
     NgxSpinnerModule,
     MatListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

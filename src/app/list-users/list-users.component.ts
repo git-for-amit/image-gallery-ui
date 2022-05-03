@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataService } from '../data.service';
 import { DBUser } from './db-users';
+import { ToastrService } from 'ngx-toastr';
 
 export interface UserData {
   id: string;
@@ -60,7 +61,7 @@ export class ListUsersComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private toastr: ToastrService) {
 
   }
 
@@ -98,11 +99,24 @@ export class ListUsersComponent implements AfterViewInit, OnInit {
     }
     this.dataService.approve(dbUser).subscribe(data => {
       let dataSourceData = this.dataSource.data;
+      let selectedUser: DBUser = {
+        firstName: '',
+        lastName: ''
+      };;
       for (let d of dataSourceData) {
         if (d.id == id) {
           d.approved = data['approved']
+          selectedUser = d;
+          break;
         }
       }
+      let message = 'User ' + selectedUser.firstName + ' ' + selectedUser.lastName;
+      if (selectedUser['approved'] == 'yes') {
+        message = `${message} is approved`
+      } else {
+        message = `${message} put on hold`
+      }
+      this.toastr.info(message, '');
     }, err => {
 
     })
