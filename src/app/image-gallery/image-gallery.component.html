@@ -2,7 +2,7 @@
     <input matInput placeholder="Search Picture" type="text"  (input) = "search($any($event.target).value)">
 </mat-form-field>
 &nbsp;&nbsp;<button button="submit" mat-raised-button color="primary">Search</button> -->
-<a mat-button fxLayoutAlign="center">Products&nbsp;&nbsp;> &nbsp; {{categoryname}}</a>
+<a mat-button fxLayoutAlign="center">Products&nbsp;&nbsp;/ &nbsp; {{categoryname}}</a>
 <div layout-margin *ngFor="let listOfPictures of listOfListOfPictures">
 
     <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="center">
