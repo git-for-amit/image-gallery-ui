@@ -42,7 +42,10 @@ export class CarouselDisplayComponent implements OnInit {
       let allAttributes = (this.selectedSlide.attributes as string).split(". ");
       
       for(let a  of allAttributes){
-        returnedAttributes.push(a.trim());
+        if(a.trim()){
+          returnedAttributes.push(a.trim());
+        }
+        
       }
 
     }
