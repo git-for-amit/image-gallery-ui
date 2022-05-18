@@ -11,14 +11,14 @@ import { ProductsComponent } from './products/products.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'list-users', component: ListUsersComponent },
   { path: 'file-upload', component: FileUploadComponent },
   { path: 'products/:categoryname', component: ImageGalleryComponent },
   { path: 'product-description', component: CarouselDisplayComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', redirectTo: 'login' },
   { path: 'image-assignment', component: ImageAssignmentComponent }
 ];
 

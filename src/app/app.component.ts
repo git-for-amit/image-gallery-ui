@@ -49,9 +49,13 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe(events => {
       if (events instanceof NavigationEnd) {
         if (this.router.url == '/login') {
+          sessionStorage.removeItem("userId");
+          sessionStorage.removeItem("token");
           this.showSignUp = true;
           this.isLoginOrSignUpVisible = true;
         } else if (this.router.url == '/register') {
+          sessionStorage.removeItem("userId");
+          sessionStorage.removeItem("token");
           this.showSignUp = false;
           this.isLoginOrSignUpVisible = true;
         } else {
