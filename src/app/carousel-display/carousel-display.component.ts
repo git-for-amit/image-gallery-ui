@@ -13,6 +13,8 @@ export class CarouselDisplayComponent implements OnInit {
 
   selectedSlide: SlideUrl;
 
+
+
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
@@ -31,6 +33,20 @@ export class CarouselDisplayComponent implements OnInit {
   }
   onSlideTransitionComplete(event) {
     this.selectedSlide = event as SlideUrl;
+
+  }
+
+  get selectedAttributes(){
+    let returnedAttributes: string [] = [];
+    if(this.selectedSlide){
+      let allAttributes = (this.selectedSlide.attributes as string).split(". ");
+      
+      for(let a  of allAttributes){
+        returnedAttributes.push(a.trim());
+      }
+
+    }
+    return returnedAttributes
   }
 
 }
