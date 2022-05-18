@@ -1,7 +1,7 @@
 <div class="carousel">
     <!-- slides -->
     <ul class="slides">
-        <li class="slide" *ngFor="let slide of slides; let i = index;" [@slideState]="getAnimationSlideState(i)">
+        <li class="slide" *ngFor="let slide of slides; let i = index;" [@slideState]="getAnimationSlideState(i)" (@slideState.done)="onAnimationEvent($event)">
             <ng-container *ngTemplateOutlet="slideTemplateRef; context: { $implicit: slide }"></ng-container>
         </li>
     </ul>

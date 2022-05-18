@@ -18,6 +18,9 @@ export class ImageGalleryComponent implements OnInit {
   copyListOfListOfPictures: any[] = []
 
   slides: SlideUrl[] = []
+
+  subcategoryNameToSlideUrlMap: Map<string, SlideUrl[]> = new Map<string, SlideUrl[]>();
+
   categoryname: string = 'Fabrics'
   params: Params;
 
@@ -50,15 +53,35 @@ export class ImageGalleryComponent implements OnInit {
           let code = imageFileObjectList[i].code;
           let categoryname = imageFileObjectList[i].categoryname;
           let srcCopy = `${Util.baseUrl}${imageFileObjectList[i].relativePath}?add-colon=true`
-          this.slides.push({
-            "url": encodeURI(srcCopy)
-          })
+          let filename = imageFileObjectList[i].filename;
+          let attributes = imageFileObjectList[i].attributes;
+          let subcategoryname = imageFileObjectList[i].subcategoryname;
+          let s: SlideUrl = {
+            "url": encodeURI(srcCopy),
+            id: id,
+            code: code,
+            categoryname: categoryname,
+            filename: filename,
+            subcategoryname: subcategoryname,
+            attributes: attributes
+          };
+          this.slides.push(s);
+          let sUrl  = this.subcategoryNameToSlideUrlMap.get(subcategoryname as string);
+
+          if(!sUrl){
+            sUrl = [];
+          }
+          sUrl.push(s);
+
+          this.subcategoryNameToSlideUrlMap.set(subcategoryname as string, sUrl);
+
           let p = {
             id: id,
             title: title,
             src: src,
             code: code,
-            categoryname: categoryname
+            categoryname: categoryname,
+            subcategoryname: subcategoryname
           }
           if (i < divisor) {
             pictures.push(p);
@@ -84,7 +107,10 @@ export class ImageGalleryComponent implements OnInit {
   search(e: string) {
 
   }
-  openCarousel() {
+  openCarousel(subcategoryname) {
+    // let slides = this.subcategoryNameToSlideUrlMap.get(subcategoryname);
+    // this.dataService.slides = slides as SlideUrl [];
+
     this.dataService.slides = this.slides;
     this.router.navigate(['/product-description']);
   }

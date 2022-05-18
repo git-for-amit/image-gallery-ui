@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, KeyValueDiffer, KeyValueDiffers, OnInit, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, KeyValueDiffer, KeyValueDiffers, OnInit, Output, TemplateRef } from '@angular/core';
 import {
   trigger,
   state,
   style,
   animate,
-  transition
+  transition,
+  AnimationEvent
 } from '@angular/animations';
 import { DataService } from '../data.service';
 
@@ -64,6 +65,11 @@ export class CarouselDialogComponent implements OnInit {
   thumbnailTemplateRef: TemplateRef<any>;
   currentInterval;
   differ: KeyValueDiffer<ActiveSlides, any>;
+
+  @Output()
+  onSlideTransitionComplete: EventEmitter<any> = new EventEmitter<any>();
+
+  previouslyEmittedSlide: any ;
 
   private _direction: Direction = Direction.Next;
   get direction() {
@@ -147,6 +153,15 @@ export class CarouselDialogComponent implements OnInit {
     if (this.currentInterval) {
       clearInterval(this.currentInterval);
     }
+  }
+
+  onAnimationEvent(event: AnimationEvent){
+    let toEmit = this.slides[this.activeSlides.current];
+    if(!this.previouslyEmittedSlide || this.previouslyEmittedSlide['id'] != toEmit['id']){
+      this.onSlideTransitionComplete.emit(toEmit);
+      console.log('emitted ', toEmit );
+    }
+    
   }
 
 }

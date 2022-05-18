@@ -11,18 +11,26 @@ export class CarouselDisplayComponent implements OnInit {
 
   slides: SlideUrl[] = []
 
+  selectedSlide: SlideUrl;
+
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-   this.slides = this.dataService.slides;
-  //  this.slides =  [
-  //   {
-  //     url: 'https://source.unsplash.com/1600x900/?nature,water'
-  //   },
-  //   {
-  //     url: 'https://source.unsplash.com/1600x1600/?nature,forest'
-  //   }
-  // ]
+    this.slides = this.dataService.slides;
+    if (this.slides && this.slides.length) {
+      this.selectedSlide = this.slides[0];
+    }
+    //  this.slides =  [
+    //   {
+    //     url: 'https://source.unsplash.com/1600x900/?nature,water'
+    //   },
+    //   {
+    //     url: 'https://source.unsplash.com/1600x1600/?nature,forest'
+    //   }
+    // ]
+  }
+  onSlideTransitionComplete(event) {
+    this.selectedSlide = event as SlideUrl;
   }
 
 }
