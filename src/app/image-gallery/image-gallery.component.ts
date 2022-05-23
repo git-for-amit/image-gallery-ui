@@ -108,10 +108,10 @@ export class ImageGalleryComponent implements OnInit {
 
   }
   openCarousel(subcategoryname) {
-    // let slides = this.subcategoryNameToSlideUrlMap.get(subcategoryname);
-    // this.dataService.slides = slides as SlideUrl [];
+    let slides = this.subcategoryNameToSlideUrlMap.get(subcategoryname);
+    this.dataService.slides = slides as SlideUrl [];
 
-    this.dataService.slides = this.slides;
+   // this.dataService.slides = this.slides;
     this.router.navigate(['/product-description']);
   }
 }
