@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutUsComponent } from './about-us/about-us.component';
 import { CarouselDisplayComponent } from './carousel-display/carousel-display.component';
+import { ContactComponent } from './contact/contact.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
-import { HomeComponent } from './home/home.component';
 import { ImageAssignmentComponent } from './image-assignment/image-assignment.component';
 import { ImageGalleryComponent } from './image-gallery/image-gallery.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 import { LoginComponent } from './login/login.component';
-import { ProductsComponent } from './products/products.component';
+import { QualityAssuranceComponent } from './quality-assurance/quality-assurance.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
@@ -19,7 +20,10 @@ const routes: Routes = [
   { path: 'products/:categoryname', component: ImageGalleryComponent },
   { path: 'product-description', component: CarouselDisplayComponent },
   { path: 'home', redirectTo: 'login' },
-  { path: 'image-assignment', component: ImageAssignmentComponent }
+  { path: 'image-assignment', component: ImageAssignmentComponent },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'quality-assurance', component: QualityAssuranceComponent }
 ];
 
 @NgModule({
