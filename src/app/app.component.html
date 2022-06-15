@@ -3,9 +3,11 @@
   <mat-toolbar style="background-color:white;">
     <img src="assets/images/logo_prem_international.jpg" height="54px" style="cursor: pointer;" (click)="home()" />
     <span style="margin: 30px;"></span>
-    <div fxShow="true" fxHide.lt-md="true" *ngIf="isLoginOrSignUpVisible == false">
+    <!-- <div fxShow="true" fxHide.lt-md="true" *ngIf="isLoginOrSignUpVisible == false"> -->
+    <div fxShow="true" fxHide.lt-md="true">
       <a mat-button routerLink="/home">Home</a>
-      <button mat-button [matMenuTriggerFor]="productsMenu" *ngIf="isLoggedIn == true">Products</button>
+      <!-- <button mat-button [matMenuTriggerFor]="productsMenu" *ngIf="isLoggedIn == true">Products</button> -->
+      <button mat-button [matMenuTriggerFor]="productsMenu">Products</button>
       <mat-menu #productsMenu="matMenu" yPosition="below">
         <button mat-menu-item routerLink="/products/FABRICS">
           Fabrics
