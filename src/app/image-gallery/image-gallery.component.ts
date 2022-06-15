@@ -40,6 +40,10 @@ export class ImageGalleryComponent implements OnInit {
   getImageFileNames(categoryname?: string) {
     let userId = sessionStorage.getItem("userId") as string;
 
+    if (!userId) {
+      userId = 'guest';
+    }
+
     this.dataService.getImageObjects(userId, categoryname).subscribe(res => {
       let imageFileObjectList = res.images
       if (imageFileObjectList != null) {
